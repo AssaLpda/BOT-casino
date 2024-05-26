@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot Principal</title>
+    <link rel="stylesheet" href="bot.html">
+    <link rel="stylesheet" href="js/login.js">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #1f2224;
+            
+        }
+        
+        h1, h2, h3, h4 {
+            color: #fffdfd;
+            margin: 20px;
+            font-family:   'Courier New', Courier, monospace /* Cambia la fuente de todos los elementos h1, h2, h3, h4 */
+        }
+
+        .container {
+            text-align: center;
+            border: 2px solid #86208a;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 5px;
+            margin: 1px;
+            
+        }
+
+        .btn {
+            margin: 1px;
+        }
+
+        .botones-inferiores {
+            margin-top: 5px;
+            
+        }
+
+        .contenedor-botones {
+            display: flex;
+            flex-direction: column;
+            font-size: small;
+            font-size: small;
+        }
+
+        #nombreUsuario {
+            margin-bottom: 10px;
+           
+        }
+
+        /* Modo oscuro */
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        .container.dark-mode {
+            border-color: #2ec6d1;
+            background-color: #1e1e1e;
+        }
+
+        .btn-dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Estilo para el botón del modo oscuro */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            font-size: 24px;
+            color: #fbff00;
+        }
+
+      /* Estilos para el textarea en modo claro */
+body.light-mode textarea {
+    color: #000; /* Texto negro en modo claro */
+}
+
+        /* Estilos para el modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #ccc; /* Fondo gris */
+    color: #000; /* Texto negro */
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilos para el modo oscuro */
+body.dark-mode .modal {
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo gris transparente en modo oscuro */
+}
+
+body.dark-mode .modal-content {
+    background-color: #333; /* Fondo gris oscuro en modo oscuro */
+    color: #fff; /* Texto blanco en modo oscuro */
+}
+
+body.dark-mode .close {
+    color: #ccc; /* Color de cierre claro en modo oscuro */
+}
+
+/* Estilos para el textarea en modo claro */
+body.light-mode .textarea {
+    color: #000; /* Texto negro en modo claro */
+    background-color: #b99797; /* Fondo gris suave en modo claro */
+}
+
+
+
+    </style>
+
+
+
+</head>
+<body>  
+    
+
+
+    <div class="container">
+        <div class="date-time">
+            <span id="currentDate"></span>
+            <span id="currentTime"></span>
+        </div>
+        
+        
+        <div class="user-info">
+            <span id="loggedUser" style="color: #ccc;">User: Assa</span>
+        </div>
+
+        <!-- Botón de modo oscuro -->
+        <i id="darkModeToggle" class="fas fa-lightbulb dark-mode-toggle" aria-label="Toggle Dark Mode"></i>
+    
+      
+             
+                    <div class="container">
+                        <h4 class="saludo-bienvenida" style="text-align: center;">Saludo de bienvenida</h4>
+            
+            <button id="btn1" class="btn btn-secondary"style="font-size: 14px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
+                <i class="fas fa-handshake"></i> Saludo principal
+            </button>
+
+            <button id="btnUsuarioNuevo" class="btn btn-secondary"style="font-size: 14px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
+                <i class="fas fa-smile"></i> Mensaje de bienvenida a usuarios
+            </button>
+        </div>
+
+        
+        
+                    <div class="container">
+                        <h4 style="text-align: center";>Creacion de usuario</h4>
+
+            <label for="nombreUsuario" style="color: #e0e0e0;" style="font-size: 20px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">Nombre de usuario:</label>
+
+            <input type="text" id="nombreUsuario" placeholder="Ingrese su nombre"style="font-size: 14px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
+
+            <button id="btnCrearUsuario" class="btn btn-primary" >
+                <i class="fas fa-user-plus"></i> 
+            </button>
+            
+
+            <div></div>
+
+            <button id="btnReestablecerUsuario" class="btn btn-warning" style="font-size: 14px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
+                <i class="fas fa-user-undo"></i> Reestablecer
+            </button>
+
+            <button id="btnAgendame" class="btn btn-secondary" style="font-size: 14px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
+                <i class="fas fa-calendar-alt"></i> Agendame!
+            </button>
+
+            <button id="btnPlataformaWeb" class="btn btn-secondary" style="font-size: 14px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
+                <i class="fas fa-globe"></i> Plataforma WEB
+            </button>
+
+            
+        </div>
+        
+
+        <div class="container">
+            <h3 style="text-align: center; color: #ffffff;">Retiros</h3>
+
+            <button id="btn3" class="btn btn-secondary"style="font-size: 14px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
+                <i class="fas fa-money-check-alt"></i> Datos de retiro
+            </button>
+            
+            <button id="btnEsperaPago" class="btn btn-warning" style="font-size: 14px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif" >
+                <i class="fas fa-hourglass-half" ></i> Espera de pago
+            </button>
+    
+            <button id="btn4" class="btn btn-success" style="font-size: 14px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
+                <i class="fas fa-check-circle"></i> Pago relizado
+            </button>
+            
+            <button id="btnTopeRetiros" class="btn btn-secondary" style="font-size: 14px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
+                <i class="fas fa-info-circle"></i> Tope de Retiros
+            </button>
+
+            <button id="btnGracias" class="btn btn-secondary" style="font-size: 14px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">GRACIAS</button>
+
+            <!-- Modal para mostrar la información del tope de retiros -->
+<div id="topeRetirosModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+                    <h2>TOPE DE RETIROS</h2>
+        <ul>
+            <li>de 0 a 15k cargados 50K x día</li>
+            <li>de 15k a 30K cargados 75k x día</li>
+            <li>de 30K a 50K cargados 100k x día</li>
+            <li>50k a 75K cargados 125K x día</li>
+            <li>+75K consultar</li>
+        </ul>
+    </div>
+</div>
+
+
+
+        </div>
+
+        <div class="container">
+            
+            <button id="btnCBU" class="btn btn-secondary">
+                <i class="fas fa-university"></i> CBU
+            </button>
+            <div> </div>
+            
+
+            <textarea id="datosCBU" rows="4" cols="50">
+                
+            </textarea>
+            <div class="botones-inferiores">
+                <button id="btnEditar" class="btn btn-secondary">Editar</button>
+                <button id="btnGuardar" class="btn btn-success" style="display: none;">Guardar</button>
+            </div>
+            </div>
+            <script>
+                // Verificar si el usuario está autenticado
+                if (localStorage.getItem('isAuthenticated') !== 'true') {
+                    // Si no está autenticado, redirigir al login
+                    window.location.href = 'bot.html'; // Cambia 'login.html' por el nombre real de tu página de login
+                }
+            </script>
+            
+            <button id="logoutButton" class="btn btn-danger" style="padding: 2px;;">Cerrar sesión</button>
+            
+            <script>
+                document.getElementById('logoutButton').addEventListener('click', function() {
+                    // Eliminar el indicador de sesión de localStorage
+                    localStorage.removeItem('isAuthenticated');
+                    // Redirigir al login
+                    window.location.href = 'index.html'; // Cambia 'login.html' por el nombre real de tu página de login
+                });
+            </script>
+           
+        </div>
+
+    </div>
+
+    <script src="js/login.js"></script>
+    <script src="js/forgot_password.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/datosuser.js"> </script>
+</body>
+</html>
+
+
+

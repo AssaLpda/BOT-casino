@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login web</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/forgot_password.js"></script>
+
+    <link rel="stylesheet" href="cl-icon/css/all.min.css">
+</head>
+
+
+
+<body>
+    <script>
+        // Verificar si el usuario está autenticado
+        if (localStorage.getItem('isAuthenticated') !== 'true') {
+            // Si no está autenticado, redirigir al login
+            window.location.href = 'index.html'; // Cambia 'login.html' por el nombre real de tu página de login
+        }
+    </script>
+
+    <div class="wrapper">
+        <form id="loginForm" class="form">
+            <h1 class="title">Inicio</h1>
+            <div class="inp">
+                <input type="text" id="username" class="input" placeholder="usuario" required>
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="inp">
+                <input type="password" id="password" class="input" placeholder="contraseña" required>
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <button type="submit" class="submit">Iniciar sesión</button>
+            <a href="forgot_password.html" class="forgot-password">¿Olvidaste tu contraseña?</a>
+        </form>
+        <div class="banner">
+            <h1 class="wel_text">JUEGASI.COM</h1><br>
+            <p class="para"></p>
+        </div>
+    </div>
+    
+    <script src="js/login.js"></script>
+</body>
+</html>
