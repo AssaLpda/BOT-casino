@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bot Principal</title>
+    <link rel="stylesheet" href="css/fecha-hora-user.css">
     <link rel="stylesheet" href="bot.html">
     <link rel="stylesheet" href="js/login.js">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -159,24 +160,20 @@ body.light-mode .textarea {
 
 </head>
 <body>  
-    
-
-
     <div class="container">
-        <div class="date-time">
-            <span id="currentDate"></span>
-            <span id="currentTime"></span>
+        <div id="userStatus" class="user-status">
+            <div class="user-info">
+                <span id="loggedInUser">Usuario: Desconocido</span>
+                <span class="status-indicator"></span>
+            </div>
+            <div class="date-time">
+                <span id="currentDate"></span>
+                <span id="currentTime"></span>
+            </div>
         </div>
         
-        
-        <div class="user-info">
-            <span id="loggedUser" style="color: #ccc;">User: Assa</span>
-        </div>
-
         <!-- Botón de modo oscuro -->
-        <i id="darkModeToggle" class="fas fa-lightbulb dark-mode-toggle" aria-label="Toggle Dark Mode"></i>
-    
-      
+        <i id="darkModeToggle" class="fas fa-lightbulb dark-mode-toggle"></i>
              
                     <div class="container">
                         <h4 class="saludo-bienvenida" style="text-align: center;">Saludo de bienvenida</h4>

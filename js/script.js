@@ -378,3 +378,28 @@ btnGracias.addEventListener('click', () => {
         alert('Error al copiar el mensaje.');
     });
 });
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Función para actualizar la fecha y hora
+    function updateDateTime() {
+        const now = new Date();
+        const date = now.toLocaleDateString();
+        const time = now.toLocaleTimeString();
+
+        document.getElementById('currentDate').innerText = date;
+        document.getElementById('currentTime').innerText = time;
+    }
+
+    // Actualizar la fecha y hora cada segundo
+    setInterval(updateDateTime, 1000);
+
+    // Mostrar el usuario conectado
+    const loggedInUser = localStorage.getItem('loggedInUser') || 'Usuario Desconocido';
+    document.getElementById('loggedInUser').innerText = `Usuario: ${loggedInUser}`;
+
+    // Ejemplo de almacenamiento del usuario al iniciar sesión (debe ser configurado en el login)
+    // localStorage.setItem('loggedInUser', 'Assa');
+});
+

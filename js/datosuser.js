@@ -1,10 +1,9 @@
 // Funcion del boton AGENDAME! //
 
 document.getElementById('btnAgendame').addEventListener('click', function() {
-    const mensaje = `Agendame yo soy Cielo! Así te llegan las promociones 🎁 
-Te cuento que también tenemos un plan de referidos para que ganes fichas gratis! 
-
-Por cada persona que réferis y que cargue $2000 o más, te regalamos 2000 fichas en tu próxima carga (vos también debes cargar $2000) solo menciona el usuario que referiste y te las acreditamos🔥`;
+    const mensaje = `Agendame yo soy Cielo! Así te llegan las promociones🤗 🎁  Te cuento que también tenemos un plan de referidos para que ganes fichas gratis! 
+    Por cada persona que réferis te regalamos 2000 fichas en tu próxima carga 
+     solo menciona el usuario que referiste y te las acreditamos🔥`;
 
     // Crear un textarea temporal para copiar el texto
     const textarea = document.createElement('textarea');
@@ -87,4 +86,28 @@ window.addEventListener('click', function(event) {
         document.getElementById('topeRetirosModal').style.display = 'none';
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Función para actualizar la fecha y hora
+    function updateDateTime() {
+        const now = new Date();
+        const date = now.toLocaleDateString();
+        const time = now.toLocaleTimeString();
+
+        document.getElementById('currentDate').innerText = date;
+        document.getElementById('currentTime').innerText = time;
+    }
+
+    // Actualizar la fecha y hora cada segundo
+    setInterval(updateDateTime, 1000);
+
+    // Mostrar el usuario conectado
+    const loggedInUser = localStorage.getItem('loggedInUser') || 'Usuario Desconocido';
+    document.getElementById('loggedInUser').innerText = `Usuario: ${loggedInUser}`;
+
+    // Ejemplo de almacenamiento del usuario al iniciar sesión (debe ser configurado en el login)
+    // localStorage.setItem('loggedInUser', 'Assa');
+});
+
+
 
