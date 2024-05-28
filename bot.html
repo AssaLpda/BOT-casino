@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/fecha-hora-user.css">
     <link rel="stylesheet" href="bot.html">
     <link rel="stylesheet" href="js/login.js">
+    <script src="js/script.js" defer></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
@@ -187,19 +188,52 @@ body.light-mode .textarea {
             </button>
         </div>
 
+      
         
+        <div class="container">
+            <h4 style="text-align: center;">Creación de usuario</h4>
         
-                    <div class="container">
-                        <h4 style="text-align: center";>Creacion de usuario</h4>
-
-            <label for="nombreUsuario" style="color: #e0e0e0;" style="font-size: 20px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">Nombre de usuario:</label>
-
-            <input type="text" id="nombreUsuario" placeholder="Ingrese su nombre"style="font-size: 14px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
-
-            <button id="btnCrearUsuario" class="btn btn-primary" >
-                <i class="fas fa-user-plus"></i> 
-            </button>
-            
+            <label for="nombreUsuario" style="color: #e0e0e0; font-size: 20px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">User:</label>
+        
+            <input type="text" id="nombreUsuario" placeholder="Ingrese su nombre" style="font-size: 14px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+        
+            <button id="btnCrearUsuario" class="btn btn-primary"><i class="fas fa-user-plus"></i> </button>
+            <button id="btnBaseDeDatos" class="btn btn-secondary">Base de Datos</button>
+        
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const loggedInUser = localStorage.getItem('loggedInUser');
+                    if (loggedInUser) {
+                        document.getElementById('loggedInUserMessage').textContent = `Usuario logueado: ${loggedInUser}`;
+                    } else {
+                        document.getElementById('loggedInUserMessage').textContent = 'Usuario no logueado';
+                    }
+                });
+        
+                document.getElementById('btnCrearUsuario').addEventListener('click', function() {
+                    const nombreUsuario = document.getElementById('nombreUsuario').value.trim();
+                    if (!nombreUsuario) {
+                        alert('Por favor, ingrese un nombre de usuario.');
+                        return;
+                    }
+        
+                    const fechaHora = new Date().toLocaleString();
+                    const creador = localStorage.getItem('loggedInUser') || 'Desconocido';
+                    const usuario = `c1${nombreUsuario.slice(0, 10).replace(/\s+/g, '')}${Math.floor(Math.random() * 100)}`;
+                    
+                    const nuevoUsuario = { usuario, fechaHora, creador };
+        
+                    let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+                    usuarios.push(nuevoUsuario);
+                    localStorage.setItem('usuarios', JSON.stringify(usuarios));
+        
+                    
+                });
+        
+                document.getElementById('btnBaseDeDatos').addEventListener('click', function() {
+                    window.location.href = 'database.html';
+                });
+            </script>
 
             <div></div>
 
@@ -283,8 +317,13 @@ body.light-mode .textarea {
                 }
             </script>
             
+            
+       
+
             <button id="logoutButton" class="btn btn-danger" style="padding: 2px;;">Cerrar sesión</button>
             
+            
+
             <script>
                 document.getElementById('logoutButton').addEventListener('click', function() {
                     // Eliminar el indicador de sesión de localStorage
@@ -300,7 +339,7 @@ body.light-mode .textarea {
 
     <script src="js/login.js"></script>
     <script src="js/forgot_password.js"></script>
-    <script src="js/script.js"></script>
+    
     <script src="js/datosuser.js"> </script>
 </body>
 </html>

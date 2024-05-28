@@ -404,3 +404,26 @@ document.addEventListener('DOMContentLoaded', function() {
     // localStorage.setItem('loggedInUser', 'Assa');
 });
 
+function createUser(username) {
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const loggedInUser = localStorage.getItem('loggedInUser'); // Obtener el usuario logueado
+    const newUser = {
+        username: username,
+        createdAt: new Date().toLocaleString(),
+        createdBy: loggedInUser // Añadir el usuario que lo creó
+    };
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+}
+
+document.getElementById('btnCrearUsuario').addEventListener('click', function() {
+    const username = document.getElementById('nombreUsuario').value;
+    if (username) {
+        createUser(username);
+        
+        document.getElementById('nombreUsuario').value = ''; // Limpia el campo de entrada
+    } else {
+        alert('Por favor, ingrese un nombre de usuario.');
+    }
+});
+

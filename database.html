@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base de Datos de Usuarios</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<style>
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+
+</style>
+
+<body>
+    <div class="container">
+        <h2>Base de Datos de Usuarios</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Usuario</th>
+                    <th>Fecha y Hora</th>
+                    <th>Creador</th>
+                </tr>
+            </thead>
+            <tbody id="usuariosTableBody">
+                <!-- Los usuarios se insertarán aquí -->
+            </tbody>
+        </table>
+        <button onclick="window.location.href='bot.html'" class="btn btn-danger" >Volver</button>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+            const usuariosTableBody = document.getElementById('usuariosTableBody');
+
+            usuarios.forEach(({ usuario, fechaHora, creador }) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${usuario}</td>
+                    <td>${fechaHora}</td>
+                    <td>${creador}</td>
+                `;
+                usuariosTableBody.appendChild(row);
+            });
+        });
+    </script>
+
+    
+</body>
+</body>
+</html>
+
