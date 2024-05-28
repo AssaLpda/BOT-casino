@@ -130,11 +130,11 @@ document.getElementById("btn1").addEventListener("click", function() {
     // Array de mensajes de pago realizado
     document.getElementById('btn4').addEventListener('click', function() {
         const mensajePagoRealizado = `
-    Encantada de poder pagarte el premio 🙌🏼   
-      
-    Felicitaciones! Te cuento que por cada amigo que me refieras y cargue,  
-      
-    TE REGALO $2000 EN FICHAS PARA JUGAR 🎁
+    
+        Encantado de poder pagarte el premio 🤗❤️
+Felicitaciones 🎉  Te cuento que por cada amigo que me refieras y cargue 
+TE REGALO $2000 EN FICHAS PARA JUGAR EN TU PRÓXIMA CARGA 🎰🍀🎁
+            
         `;
         
         // Copiar al portapapeles
