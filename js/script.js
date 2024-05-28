@@ -129,7 +129,8 @@ document.getElementById("btn1").addEventListener("click", function() {
 
     // Array de mensajes de pago realizado
     document.getElementById('btn4').addEventListener('click', function() {
-        const mensajePagoRealizado = `Encantado de poder pagarte el premio 🤗❤️
+        const mensajePagoRealizado = `
+Encantado de poder pagarte el premio 🤗❤️
 Felicitaciones 🎉  
 
 Te cuento que por cada amigo que me refieras y cargue 
